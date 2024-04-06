@@ -13,6 +13,14 @@ export default defineEventHandler(async (event) => {
     configureSWRHeaders(event);
 
     user = await fetchUser(event.context.params.id);
+
+    if (!user) {
+        throw createError({
+            statusCode: 404,
+            statusMessage: 'User not fetched'
+        });
+    }
+
     return {
         ...user
     }
