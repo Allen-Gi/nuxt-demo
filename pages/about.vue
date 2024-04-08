@@ -3,7 +3,6 @@ import {useUsers} from "~/composables/users";
 
 useHead({
   title: 'Nuxt About',
-  description: 'Nuxt Routing set up successfully!',
 })
 
 definePageMeta({
@@ -12,20 +11,22 @@ definePageMeta({
 
 const shopInfo = useState('shopInfo')
 
-const { getUsers } = useUsers();
+const { getUsers,getCalendar } = useUsers();
 const { users } = await getUsers()
+
 
 defineI18nRoute(false)
 </script>
 
 <template>
-  <div ma class="flex w-[500px]">
+  <div class="flex w-[500px]">
     <h1>{{ $t('welcome') }}About</h1>
     <p>This is the about page</p>
     <p>{{ shopInfo }}</p>
 
     <span text="blue 5xl hover:red" cursor="default">Hello Nuxt 3</span>
     <br>
+    <client-only>
     <table class="table">
       <tr v-for="user in users" :key="user.id">
         <td>{{ user.id }}</td>
@@ -46,6 +47,7 @@ defineI18nRoute(false)
 
       </tr>
     </table>
+    </client-only>
   </div>
 </template>
 

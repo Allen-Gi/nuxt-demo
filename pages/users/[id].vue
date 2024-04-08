@@ -10,7 +10,7 @@
 </template>
 
 <script setup>
-import {useUsers} from "~/composables/users";
+import {useUsers} from "~/composables/users.js";
 const route = useRoute()
 const { id: userId } = route.params
 

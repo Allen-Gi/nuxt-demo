@@ -1,5 +1,5 @@
 import { $fetch } from 'ofetch';
-import {configureSWRHeaders} from "~/server/utils/swr.ts";
+import {configureSWRHeaders} from "~/server/utils/swr.js";
 
 export let users;
 
@@ -9,15 +9,11 @@ async function fetchUsers() {
 }
 
 export default defineEventHandler(async (event) => {
-    configureSWRHeaders(event);
-
-    if (users) {
-        return {
-            ...users
-        }
+    //configureSWRHeaders(event);
+    await fetchUsers();
+    if (!users) {
+        throw new Error('Failed to fetch users data')
     }
-
-    users = await fetchUsers();
     return {
         ...users
     }
