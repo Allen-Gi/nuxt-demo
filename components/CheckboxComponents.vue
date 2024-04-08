@@ -1,11 +1,31 @@
 <script setup lang="ts">
 
+const checkbox = defineModel({
+  key: 'checkbox',
+  type: Boolean,
+  default: false
+})
+
+const {
+  label,
+  name
+} = defineProps({
+  label: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    default: 'checkbox1'
+  }
+})
 </script>
 
 <template>
-  <div>
-    <h1>CheckboxComponent</h1>
-  </div>
+  <label class="label_ckeck"><input type="checkbox" :name="name" v-model="checkbox">
+    <span class="check_mark"></span>
+    <span class="check_text">{{ label }}</span>
+  </label>
 </template>
 
 <style scoped>

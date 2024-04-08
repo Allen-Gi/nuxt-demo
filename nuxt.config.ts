@@ -29,7 +29,7 @@ export default defineNuxtConfig({
                 { src: '/static/js/common.ui.js', type: 'text/javascript', defer: true },
             ],
             link: [
-                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+                { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
                 { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap' },
                 { rel: 'stylesheet', href: '/static/css/reset.css' },
                 { rel: 'stylesheet', href: '/static/css/sumoselect.min.css' },

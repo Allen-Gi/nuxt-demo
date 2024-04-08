@@ -1,9 +1,33 @@
 <script setup lang="ts">
+const checkbox = defineModel({
+  key: 'checkbox',
+  type: Boolean,
+  default: false
+})
 
+const {
+  label,
+  name
+} = defineProps({
+  label: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    default: 'checkbox1'
+  }
+})
 </script>
 
 <template>
-
+  <label class="switch_wrap">
+    <strong>{{ label }}</strong>
+    <span class="switch">
+			<input type="checkbox" :name="name" v-model="checkbox">
+			<span class="slider"></span>
+		</span>
+  </label>
 </template>
 
 <style scoped>

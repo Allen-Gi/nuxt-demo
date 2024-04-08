@@ -19,6 +19,8 @@ const localePath = useLocalePath()
       <NuxtLink to="/">Home</NuxtLink>
       |
       <NuxtLink to="/about">About</NuxtLink>
+      |
+      <NuxtLink to="/sample">Sample</NuxtLink>
     </div>
     <div>
       <slot/>
