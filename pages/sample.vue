@@ -49,18 +49,17 @@ onUpdated(() => {
       label="체크박스1"
       name="checkbox1"
     />
+
     <radio-components
       v-model="radio"
-      label="라디오1"
+      :options="[
+        { label: '옵션1', value: 'radio1' },
+        { label: '옵션2', value: 'radio2' },
+        { label: '옵션3', value: 'radio3' }
+      ]"
       name="radio1"
-      value="radio1"
     />
-    <radio-components
-      v-model="radio"
-      label="라디오2"
-      name="radio1"
-      value="radio2"
-    />
+
     <switch-components
       v-model="switchToggle"
       label="중요 일정만 보기"

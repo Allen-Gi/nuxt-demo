@@ -3,9 +3,9 @@
 </script>
 
 <template>
-  <div>
-    <h1>Footer</h1>
-  </div>
+<calendar-layout>
+
+</calendar-layout>
 </template>
 
 <style scoped>

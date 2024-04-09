@@ -1,25 +1,19 @@
 <script setup lang="ts">
 const radio = defineModel({
-  key: 'radio',
   type: String,
   required: true
 })
 
 const {
-  label,
   name,
-  value
+  options
 } = defineProps({
-  label: {
-    type: String,
-    required: true
-  },
   name: {
     type: String,
-    default: 'checkbox1'
+    default: 'radio1'
   },
-  value: {
-    type: String,
+  options: {
+    type: Array,
     required: true
   }
 })
@@ -27,15 +21,17 @@ const {
 
 <template>
   <client-only>
-  <label class="label_ckeck"><input
-      type="radio"
-      :name="name"
-      v-model="radio"
-      :value="value"
-  >
-    <span class="radio_mark"></span>
-    <span class="check_text">{{ label }}</span>
-  </label>
+    <template v-for="option in options">
+      <label class="label_ckeck"><input
+        type="radio"
+        :name="name"
+        v-model="radio"
+        :value="option.value"
+      >
+        <span class="radio_mark"></span>
+        <span class="check_text">{{ option.label }}</span>
+      </label>
+    </template>
   </client-only>
 </template>
 

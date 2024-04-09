@@ -58,14 +58,14 @@ $(function(){
 		$target.toggleClass("active");
 	});	
 
-	//tab
-	$(".tabs li a").click(function () {
-		var activeTab = $(this).attr("href");
-		$(".tabs li a").removeClass("active");
-		$(this).addClass("active");
-		$(".tab_content").hide();
-		$(activeTab).show();
-    });
+	// //tab
+	// $(".tabs li a").click(function () {
+	// 	var activeTab = $(this).attr("href");
+	// 	$(".tabs li a").removeClass("active");
+	// 	$(this).addClass("active");
+	// 	$(".tab_content").hide();
+	// 	$(activeTab).show();
+    // });
 
 	//검색input
 	$(".auto_input .inputbox").focus(function () {

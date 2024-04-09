@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 const checkbox = defineModel({
-  key: 'checkbox',
   type: Boolean,
   default: false
 })

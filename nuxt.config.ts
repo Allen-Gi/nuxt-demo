@@ -13,7 +13,6 @@ export default defineNuxtConfig({
         baseURL: '/', // defaulted by nuxt
         // Look into HeadAndMeta.vue for the rest
         head: {
-            title: 'Nuxt Pinia',
             meta: [
                 { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge' },
                 { name: 'viewport', content: 'width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no' },
@@ -27,6 +26,11 @@ export default defineNuxtConfig({
                 { src: '/static/js/jquery.sumoselect.min.js', type: 'text/javascript', defer: true },
                 { src: '/static/js/jquery.dateandtime.js', type: 'text/javascript', defer: true },
                 { src: '/static/js/common.ui.js', type: 'text/javascript', defer: true },
+                { src: '/static/js/moment.js', type: 'text/javascript', defer: true },
+                { src: '/static/js/moment-with-locales.js', type: 'text/javascript', defer: true },
+                { src: '/static/js/index.global.min.js', type: 'text/javascript', defer: true },
+                { src: '/static/js/locales-all.global.min.js', type: 'text/javascript', defer: true },
+                { src: '/static/js/calendar.js', type: 'text/javascript', defer: true },
             ],
             link: [
                 { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'},
@@ -34,6 +38,7 @@ export default defineNuxtConfig({
                 { rel: 'stylesheet', href: '/static/css/reset.css' },
                 { rel: 'stylesheet', href: '/static/css/sumoselect.min.css' },
                 { rel: 'stylesheet', href: '/static/css/common.css' },
+                { rel: 'stylesheet', href: '/static/css/calendar.css' },
             ],
 
         },
