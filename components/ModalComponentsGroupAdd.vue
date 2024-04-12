@@ -18,11 +18,7 @@ const isOpen = defineModel();
             <dd>
               <div class="split">
                 <div class="inputbox_wrap">
-                  <input-components
-                    type="text"
-                    placeholder="그룹명"
-                    style="width: 100%"
-                  />
+                  <input type="text" name="" value="" class="inputbox" placeholder="그룹명" style="width: 100%;">
                   <span class="byte">50/50</span>
                 </div>
                 <div class="color_select">

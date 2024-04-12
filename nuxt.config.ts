@@ -23,6 +23,7 @@ export default defineNuxtConfig({
             script: [
                 { src: '/static/js/jquery.min.js', type: 'text/javascript', defer: true},
                 { src: '/static/js/jquery-ui.min.js', type: 'text/javascript', defer: true },
+                { src: '/static/js/jquery.sumoselect.min.js', type: 'text/javascript', defer: true },
                 { src: '/static/js/jquery.dateandtime.js', type: 'text/javascript', defer: true },
                 { src: '/static/js/common.ui.js', type: 'text/javascript', defer: true },
                 { src: '/static/js/moment.js', type: 'text/javascript', defer: true },
@@ -34,7 +35,7 @@ export default defineNuxtConfig({
             link: [
                 { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap' },
                 { rel: 'stylesheet', href: '/static/css/reset.css' },
-                // { rel: 'stylesheet', href: '/static/css/sumoselect.min.css' },
+                { rel: 'stylesheet', href: '/static/css/sumoselect.min.css' },
                 { rel: 'stylesheet', href: '/static/css/common.css' },
                 // { rel: 'stylesheet', href: '/static/css/calendar.css' },
             ],
