@@ -1,30 +1,39 @@
 <script setup lang="ts">
 
 const checkbox = defineModel({
-  type: Boolean,
-  default: false
+  type: Array,
+  required: true
 })
 
 const {
-  label,
-  name
+  name,
+  options
 } = defineProps({
-  label: {
-    type: String,
-    required: true
-  },
   name: {
     type: String,
     default: 'checkbox1'
+  },
+  options: {
+    type: Array,
+    default: () => []
   }
 })
 </script>
 
 <template>
-  <label class="label_ckeck"><input type="checkbox" :name="name" v-model="checkbox">
-    <span class="check_mark"></span>
-    <span class="check_text">{{ label }}</span>
-  </label>
+  <client-only>
+  <template v-for="option in options">
+    <label class="label_ckeck"><input
+      type="checkbox"
+      :name="name"
+      v-model="checkbox"
+      :value="option.value"
+    >
+      <span class="check_mark"></span>
+      <span class="check_text">{{ option.label }}</span>
+    </label>
+  </template>
+  </client-only>
 </template>
 
 <style scoped>

@@ -1,14 +1,12 @@
 <script setup lang="ts">
 const input = defineModel({
-  key: 'input',
   type: String,
   default: ''
 })
 
 const {
   name,
-    placeholder
-
+  placeholder
 } = defineProps({
   name: {
     type: String,

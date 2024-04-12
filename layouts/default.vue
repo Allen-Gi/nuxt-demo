@@ -43,7 +43,6 @@ const classWrap = computed(() => {
       <div id="setup_container">
         <slot/>
       </div>
-
     </div>
   </div>
 </template>

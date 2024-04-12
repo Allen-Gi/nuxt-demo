@@ -1,8 +1,28 @@
 <script setup>
+import { useToggle } from "@vueuse/core";
+import draggable from "vuedraggable";
 
-onMounted(() => {
-  $(".sort_content").sortable();
-})
+const [ addGroupIsOpenLayer, addGroupIsOpenToggle] = useToggle()
+
+const list = ref([
+  { id: 1, category: "MY", type: "MY", relation_code: '', group_name: '할 일', front_group_name: '노출 안 함', group_color: '', display_front: 'T', use_front_notification: '', notification_before_minute: '', notification_before_hour: '', notification_type: '', use_single_calendar: '', single_calendar_front_permission: '', single_calendar_front_start_calendar: '', single_calendar_front_start_week: '', sort: 0 },
+  { id: 2, category: "MY", type: "MY", relation_code: '', group_name: '상품 출고',front_group_name: '노출 함', group_color: '', display_front: 'F', use_front_notification: '', notification_before_minute: '', notification_before_hour: '', notification_type: '', use_single_calendar: '', single_calendar_front_permission: '', single_calendar_front_start_calendar: '', single_calendar_front_start_week: '', sort: 1},
+  { id: 3, category: "MY", type: "MY", relation_code: '', group_name: '이벤트',front_group_name: '노출 함', group_color: '', display_front: 'F', use_front_notification: '', notification_before_minute: '', notification_before_hour: '', notification_type: '', use_single_calendar: '', single_calendar_front_permission: '', single_calendar_front_start_calendar: '', single_calendar_front_start_week: '', sort: 2},
+])
+
+const subscriptionList = ref([
+  { id: 1, category: "SUB", type: "SUB", relation_code: '', group_name: '프로모션 일정',front_group_name: '노출 함', group_color: '', display_front: 'F', use_front_notification: '', notification_before_minute: '', notification_before_hour: '', notification_type: '', use_single_calendar: '', single_calendar_front_permission: '', single_calendar_front_start_calendar: '', single_calendar_front_start_week: '', sort: 0},
+  { id: 2, category: "SUB", type: "SUB", relation_code: '', group_name: '이벤트 모니터링',front_group_name: '노출 함', group_color: '', display_front: 'F', use_front_notification: '', notification_before_minute: '', notification_before_hour: '', notification_type: '', use_single_calendar: '', single_calendar_front_permission: '', single_calendar_front_start_calendar: '', single_calendar_front_start_week: '', sort: 1},
+  { id: 3, category: "SUB", type: "SUB", relation_code: '', group_name: '마켓 프로모션',front_group_name: '노출 함', group_color: '', display_front: 'F', use_front_notification: '', notification_before_minute: '', notification_before_hour: '', notification_type: '', use_single_calendar: '', single_calendar_front_permission: '', single_calendar_front_start_calendar: '', single_calendar_front_start_week: '', sort: 2},
+])
+
+const dragOptions = {
+  animation: 200,
+  group: "description",
+  disabled: false,
+  ghostClass: "ghost"
+}
+
 </script>
 
 <template>
@@ -13,8 +33,17 @@ onMounted(() => {
       <div class="stit">
         <h2>내 일정</h2>
         <div class="btn_control">
-          <button type="button" class="btn btn_sub tiny">선택 삭제</button>
-          <a href="#addGroup" class="btn btn_submit tiny btnModalOpen">그룹 추가</a></div>
+          <button-components
+            label="선택 삭제"
+            size="tiny"
+            type="sub"
+          />
+          <button-components
+              label="그룹 추가"
+              size="tiny"
+              @click="addGroupIsOpenToggle"
+          />
+        </div>
       </div>
 
       <!-- 내 일정 리스트 -->
@@ -48,48 +77,25 @@ onMounted(() => {
           <li><strong>관리</strong></li>
           <li><strong>순서</strong></li>
         </ul>
-
-        <div class="sort_content ui-sortable">
-          <ul class="row ui-sortable-handle">
-            <li>
-              <label class="label_ckeck"><input type="checkbox" name="" value="">
-                <span class="check_mark"></span>
-              </label>
-            </li>
-            <li>할 일</li>
-            <li>노출 안 함</li>
-            <li>알림 없음</li>
-            <li>사용 안함</li>
-            <li><a href="#" class="btn btn_default sml">수정</a></li>
-            <li><span class="ico_turn"></span></li>
-          </ul>
-          <ul class="row ui-sortable-handle">
-            <li>
-              <label class="label_ckeck"><input type="checkbox" name="" value="">
-                <span class="check_mark"></span>
-              </label>
-            </li>
-            <li>상품 출고</li>
-            <li>노출함</li>
-            <li>쇼핑몰 관리자 알림 : 10분 전</li>
-            <li>사용함</li>
-            <li><a href="#" class="btn btn_default sml">수정</a></li>
-            <li><span class="ico_turn"></span></li>
-          </ul>
-          <ul class="row ui-sortable-handle">
-            <li>
-              <label class="label_ckeck"><input type="checkbox" name="" value="">
-                <span class="check_mark"></span>
-              </label>
-            </li>
-            <li>이벤트</li>
-            <li>노출함</li>
-            <li>메시지 : 10분 전 / 당일 오전 9시</li>
-            <li>사용함</li>
-            <li><a href="#" class="btn btn_default sml">수정</a></li>
-            <li><span class="ico_turn"></span></li>
-          </ul>
-        </div>
+        <client-only>
+          <draggable v-model="list" v-bind="dragOptions" tag="div" item-key="sort" class="sort_content ui-sortable">
+            <template #item="{element}">
+            <ul class="row ui-sortable-handle">
+              <li>
+                <label class="label_ckeck"><input type="checkbox" name="" value="">
+                  <span class="check_mark"></span>
+                </label>
+              </li>
+              <li>{{ element.group_name }}</li>
+              <li>{{ element.display_front }}</li>
+              <li>알림 없음</li>
+              <li>사용 안함</li>
+              <li><a href="#" class="btn btn_default sml">수정</a></li>
+              <li><span class="ico_turn"></span></li>
+            </ul>
+            </template>
+          </draggable>
+        </client-only>
       </div>
       <!-- //내 일정 리스트 -->
 
@@ -129,37 +135,32 @@ onMounted(() => {
           <div class="rowspan ui-sortable-handle">
             프로모션 일정<br><a href="#registerCancel" class="btn_link btnModalOpen">구독 취소</a>
           </div>
-          <ul class="row ui-sortable-handle">
-            <li>쇼핑몰 프로모션</li>
-            <li>노출함</li>
-            <li>메시지 : 10분 전</li>
-            <li>사용 안함</li>
-            <li><a href="#" class="btn btn_default sml">수정</a></li>
-            <li><span class="ico_turn"></span></li>
-          </ul>
-          <ul class="row ui-sortable-handle">
-            <li>이벤트 모니터링</li>
-            <li>노출함</li>
-            <li>쇼핑몰 관리자 알림 : 당일 오전 9시</li>
-            <li>사용 안함</li>
-            <li><a href="#" class="btn btn_default sml">수정</a></li>
-            <li><span class="ico_turn"></span></li>
-          </ul>
-          <ul class="row ui-sortable-handle">
-            <li>마켓 프로모션</li>
-            <li>노출함</li>
-            <li>메시지 : 10분 전</li>
-            <li>알림 없음</li>
-            <li><a href="#" class="btn btn_default sml">수정</a></li>
-            <li><span class="ico_turn"></span></li>
-          </ul>
+          <client-only>
+            <draggable v-model="subscriptionList" v-bind="dragOptions" tag="div" item-key="sort">
+              <template #item="{element}">
+                <ul class="row ui-sortable-handle">
+                  <li>{{ element.group_name}}</li>
+                  <li>노출함</li>
+                  <li>메시지 : 10분 전</li>
+                  <li>사용 안함</li>
+                  <li><a href="#" class="btn btn_default sml">수정</a></li>
+                  <li><span class="ico_turn"></span></li>
+                </ul>
+              </template>
+            </draggable>
+          </client-only>
         </div>
       </div>
       <!-- //구독 일정 리스트 -->
     </div>
   </basic-setting-layout>
+  <modal-components-group-add v-model="addGroupIsOpenLayer">
+  </modal-components-group-add>
 </template>
 
 <style scoped>
-
+.ghost {
+  opacity: 0.4;
+  background-color: #ffffff !important;
+}
 </style>

@@ -21,8 +21,10 @@ const { label, size, type } = defineProps({
     class="btn"
     :class="{
       sml: size === 'small',
+      tiny: size === 'tiny',
       btn_submit: type === 'primary',
       btn_line: type === 'outline',
+      btn_sub: type === 'sub',
       btn_default: type === 'default',
     }"
     >{{ label }}</a

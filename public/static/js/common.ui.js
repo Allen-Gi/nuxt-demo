@@ -8,32 +8,8 @@ function closeLayer(IdName){
 	return false;
 }
 
-//소스복사
-function copy(id){
-	var r = document.createRange();
-	r.selectNode(document.getElementById(id));
-	window.getSelection().removeAllRanges();
-	window.getSelection().addRange(r);
-	document.execCommand('copy');
-	window.getSelection().removeAllRanges();
-	
-	$('.layerAlert').fadeIn('200');
-	
-	setTimeout(function() {
-		$('.layerAlert').fadeOut('200');
-	}, 2000);
-}
-
 $(function(){
-	$('.multiple').SumoSelect({
-		csvDispCount: 99,
-	});
 
-	$('.multiple_type2').SumoSelect({ 
-		okCancelInMulti: true,
-		triggerChangeCombined: false
-	});
-	
 	//달력 컬러선택
 	var colorReset = $('.color_select select').find("option:selected").data("sub");
 	$(".color_select .SumoSelect>.CaptionCont span").css('background-color', colorReset);
@@ -42,9 +18,6 @@ $(function(){
 		var colorValue = $(this).find("option:selected").data("sub");
 		$(".color_select .SumoSelect>.CaptionCont span").css('background-color', colorValue);
 	});
-
-	//리스트 순서변경
-	$(".sort_content").sortable();
 
 	//모달 레이어 열기
 	$('.btnModalOpen').click(function(){
@@ -57,15 +30,6 @@ $(function(){
 		var $target = $(".single_calendar");
 		$target.toggleClass("active");
 	});	
-
-	// //tab
-	// $(".tabs li a").click(function () {
-	// 	var activeTab = $(this).attr("href");
-	// 	$(".tabs li a").removeClass("active");
-	// 	$(this).addClass("active");
-	// 	$(".tab_content").hide();
-	// 	$(activeTab).show();
-    // });
 
 	//검색input
 	$(".auto_input .inputbox").focus(function () {

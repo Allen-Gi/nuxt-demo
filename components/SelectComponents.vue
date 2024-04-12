@@ -1,6 +1,5 @@
 <script setup lang="ts">
 const select = defineModel({
-  key: 'select',
   type: String,
   default: ''
 })
