@@ -1,5 +1,39 @@
 <script setup lang="ts">
 
+const form = ref({
+  reportUse: 'Y',
+  sendTime: '오전 8시',
+  groups: ['전체']
+})
+
+const [includesGroupIsOpen, includesGroupIsOpenToggle] = useToggle()
+const includesGroupOptions = [
+  '전체',
+  '상품',
+  '할일',
+]
+const handleSetIncludesGroup = (group) => {
+  if (form.value.groups.includes(group)) {
+    form.value.groups = form.value.groups.filter(item => item !== group)
+  } else {
+    form.value.groups.push(group)
+  }
+  includesGroupIsOpen.value = true;
+}
+const dropzone = ref(null);
+const handleOutsideClick = (event: { target: any; }) => {
+  if (includesGroupIsOpen.value === true && dropzone.value && !dropzone.value.contains(event.target)) {
+    includesGroupIsOpen.value = false;
+  }
+};
+
+onMounted(() => {
+  document.addEventListener('click', handleOutsideClick);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('click', handleOutsideClick);
+});
 </script>
 
 <template>
@@ -11,14 +45,11 @@
         <dl class="cell">
           <dt>사용 여부</dt>
           <dd>
-            <label class="label_ckeck"><input type="radio" name="reportUse" value="" checked="">
-              <span class="radio_mark"></span>
-              <span class="check_text">사용함</span>
-            </label>
-            <label class="label_ckeck"><input type="radio" name="reportUse" value="">
-              <span class="radio_mark"></span>
-              <span class="check_text">사용안함</span>
-            </label>
+            <radio-components v-model="form.reportUse" :options="[
+              { label: '사용함', value: 'Y' },
+              { label: '사용안함', value: 'N' }
+            ]" />
+
             <div id="usable" class="radio_cont">
               카카오알림톡 발송 후 실패 시 SMS 발송<br>
               <p class="txt_sub">SMS 발송 가능 건수가 자동으로 차감됩니다.<br>
@@ -34,7 +65,8 @@
         </dl>
         <dl class="cell slt">
           <dt>발송 시간
-            <button type="button" class="btn_help" onclick="openLayer('layerSendTime')"><span class="blind">도움말</span></button>
+            <button type="button" class="btn_help" onclick="openLayer('layerSendTime')"><span
+                class="blind">도움말</span></button>
             <section id="layerSendTime" class="layer_popup">
               <button onclick="closeLayer('layerSendTime')" class="close"><span class="blind">닫기</span></button>
               <h1>도움말</h1>
@@ -45,14 +77,15 @@
           </dt>
           <dd>
             <span class="select_text">매일</span>
-            <select class="selectbox">
-              <option>오전 8시</option>
-            </select>
+            <select-components :options="[
+              { label: '오전 8시', value: '오전 8시' }
+            ]" v-model="form.sendTime" />
           </dd>
         </dl>
         <dl class="cell">
           <dt>포함 그룹
-            <button type="button" class="btn_help" onclick="openLayer('layerGroup')"><span class="blind">도움말</span></button>
+            <button type="button" class="btn_help" onclick="openLayer('layerGroup')"><span
+                class="blind">도움말</span></button>
             <section id="layerGroup" class="layer_popup">
               <button onclick="closeLayer('layerGroup')" class="close"><span class="blind">닫기</span></button>
               <h1>도움말</h1>
@@ -62,11 +95,32 @@
             </section>
           </dt>
           <dd>
-            <div class="SumoSelect" tabindex="0" role="button" aria-expanded="false" selected-count="1" is-selected="true"><select multiple="multiple" placeholder="선택하세요" class="multiple SumoUnder" tabindex="-1">
-              <option selected="" value="전체">전체</option>
-              <option value="할일">할일</option>
-              <option value="상품 출고">상품 출고</option>
-            </select><p class="CaptionCont SelectBox multiple" title=" 전체"><span> 전체</span><label><i></i></label></p><div class="optWrapper multiple"><ul class="options"><li class="opt selected"><span><i></i></span><label>전체</label></li><li class="opt"><span><i></i></span><label>할일</label></li><li class="opt"><span><i></i></span><label>상품 출고</label></li></ul><div class="MultiControls"><p tabindex="0" class="btnOk">OK</p><p tabindex="0" class="btnCancel">Cancel</p></div></div></div>
+            <div class="SumoSelect" tabindex="0" role="button" aria-expanded="false" selected-count="1"
+              is-selected="true" ref="dropzone">
+              <select multiple="multiple" v-model="form.groups" placeholder="선택하세요" class="multiple SumoUnder"
+                tabindex="-1">
+                <option v-for="(group, key) in includesGroupOptions" :key="key">{{ group }}</option>
+              </select>
+              <p class="CaptionCont SelectBox multiple" :title="form.groups.join(', ')"
+                @click="includesGroupIsOpenToggle()">
+                <span>{{ form.groups.join(', ') }}</span>
+                <label>
+                  <i></i>
+                </label>
+              </p>
+              <div class="optWrapper multiple" v-if="includesGroupIsOpen" style="display: block;">
+                <ul class="options">
+                  <li @click="handleSetIncludesGroup(group)" v-for="(group, key) in includesGroupOptions" :key="key"
+                    class="opt" :class="{ selected: form.groups.includes(group) }">
+                    <span><i></i></span><label>{{ group }}</label>
+                  </li>
+                </ul>
+                <div class="MultiControls">
+                  <p tabindex="0" class="btnOk">OK</p>
+                  <p tabindex="0" class="btnCancel">Cancel</p>
+                </div>
+              </div>
+            </div>
           </dd>
         </dl>
       </div>
@@ -86,6 +140,4 @@
   </basic-setting-layout>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

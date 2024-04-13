@@ -1,75 +1,19 @@
-# Nuxt 3 Minimal Starter
+# Cafe24 캘린더
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## 사양문의
 
-## Setup
+### 설정
+#### 기본설정
+1. 하루 표시 일정 값을 설정안했을시 어떻게 처리?
+2. 접근 권한 회원만허용시 권한을 모두 선택안했을시? 아니면 무조건 하나는 선택가능
+3. 디자인소스
 
-Make sure to install the dependencies:
+#### 일정설정
+1. 그룹추가 캘린더명 글자수 체크 바이트로 할건지 알럿메시지?
+2. 적용 분류 선택 모두 선택안했을시
+3. 접근 권한 (기본설정-2)
+4. 그룹 추가 필수 항목 알럿메시지
 
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+#### 데일리
+1. 포함 그룹 선택
+2. 발송시간 매일 0-24시?

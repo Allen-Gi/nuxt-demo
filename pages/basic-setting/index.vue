@@ -58,41 +58,29 @@ const handleCopy = () => {
         <dl class="cell">
           <dt>기본 화면</dt>
           <dd>
-            <radio-components
-              name="start_calendar"
-              :options="[
-                { label: '월', value: 'M' },
-                { label: '주', value: 'W' },
-                { label: '일', value: 'D' },
-              ]"
-              v-model="form.start_calendar"
-            />
+            <radio-components name="start_calendar" :options="[
+              { label: '월', value: 'M' },
+              { label: '주', value: 'W' },
+              { label: '일', value: 'D' },
+            ]" v-model="form.start_calendar" />
           </dd>
         </dl>
         <dl class="cell">
           <dt>한주의 시작</dt>
           <dd>
-            <radio-components
-              name="start_week"
-              :options="[
-                { label: '일요일', value: 'S' },
-                { label: '월요일', value: 'M' },
-              ]"
-              v-model="form.start_week"
-            />
+            <radio-components name="start_week" :options="[
+              { label: '일요일', value: 'S' },
+              { label: '월요일', value: 'M' },
+            ]" v-model="form.start_week" />
           </dd>
         </dl>
         <dl class="cell">
           <dt>보조 캘린더</dt>
           <dd>
-            <radio-components
-              name="use_secondary_calendar"
-              :options="[
-                { label: '사용함', value: 'T' },
-                { label: '사용안함', value: 'F' },
-              ]"
-              v-model="form.use_secondary_calendar"
-            />
+            <radio-components name="use_secondary_calendar" :options="[
+              { label: '사용함', value: 'T' },
+              { label: '사용안함', value: 'F' },
+            ]" v-model="form.use_secondary_calendar" />
           </dd>
         </dl>
         <dl class="cell slt">
@@ -100,11 +88,7 @@ const handleCopy = () => {
             <div class="split left">
               하루 표시 일정
               <div class="help_wrap">
-                <button
-                  type="button"
-                  class="btn_help"
-                  onclick="openLayer('layerDay')"
-                >
+                <button type="button" class="btn_help" onclick="openLayer('layerDay')">
                   <span class="blind">도움말</span>
                 </button>
                 <section id="layerDay" class="layer_popup">
@@ -121,16 +105,12 @@ const handleCopy = () => {
           </dt>
           <dd>
             <span class="select_text">최대</span>
-            <select-components
-              name="display_limit"
-              :options="[
-                { label: '선택하세요', value: '' },
-                { label: '5개', value: '5' },
-                { label: '10개', value: '10' },
-                { label: '제한없음', value: '0' },
-              ]"
-              v-model="form.display_limit"
-            />
+            <select-components name="display_limit" :options="[
+              { label: '선택하세요', value: '' },
+              { label: '5개', value: '5' },
+              { label: '10개', value: '10' },
+              { label: '제한없음', value: '0' },
+            ]" v-model="form.display_limit" />
           </dd>
         </dl>
       </div>
@@ -146,71 +126,47 @@ const handleCopy = () => {
         <dl class="cell">
           <dt>사용여부</dt>
           <dd>
-            <radio-components
-              name="use_front"
-              :options="[
-                { label: '사용함', value: 'T' },
-                { label: '사용안함', value: 'F' },
-              ]"
-              v-model="form.use_front"
-            />
+            <radio-components name="use_front" :options="[
+              { label: '사용함', value: 'T' },
+              { label: '사용안함', value: 'F' },
+            ]" v-model="form.use_front" />
           </dd>
         </dl>
         <dl class="cell">
           <dt>접근 권한</dt>
           <dd>
-            <radio-components
-              name="front_use_permission"
-              :options="[
-                { label: '전체 허용', value: 'T' },
-                { label: '회원만 허용', value: 'F' },
-              ]"
-              v-model="form.front_use_permission"
-            />
+            <radio-components name="front_use_permission" :options="[
+              { label: '전체 허용', value: 'T' },
+              { label: '회원만 허용', value: 'F' },
+            ]" v-model="form.front_use_permission" />
 
-            <div
-              id="frontGrade"
-              class="radio_cont"
-              v-if="form.front_use_permission === 'F'"
-            >
-              <checkbox-components
-                name="front_permission"
-                :options="[
-                  { label: '전체', value: 'a' },
-                  { label: '새싹', value: 'b' },
-                  { label: '일반', value: 'c' },
-                  { label: 'VIP', value: 'd' },
-                ]"
-                v-model="form.front_permission"
-              />
+            <div id="frontGrade" class="radio_cont" v-if="form.front_use_permission === 'F'">
+              <checkbox-components name="front_permission" :options="[
+              { label: '전체', value: 'a' },
+              { label: '새싹', value: 'b' },
+              { label: '일반', value: 'c' },
+              { label: 'VIP', value: 'd' },
+            ]" v-model="form.front_permission" />
             </div>
           </dd>
         </dl>
         <dl class="cell">
           <dt>기본 화면</dt>
           <dd>
-            <radio-components
-              name="front_start_calendar"
-              :options="[
-                { label: '월', value: 'M' },
-                { label: '주', value: 'W' },
-                { label: '일', value: 'D' },
-              ]"
-              v-model="form.front_start_calendar"
-            />
+            <radio-components name="front_start_calendar" :options="[
+              { label: '월', value: 'M' },
+              { label: '주', value: 'W' },
+              { label: '일', value: 'D' },
+            ]" v-model="form.front_start_calendar" />
           </dd>
         </dl>
         <dl class="cell">
           <dt>한주의 시작</dt>
           <dd>
-            <radio-components
-              name="front_start_week"
-              :options="[
-                { label: '일요일', value: 'S' },
-                { label: '월요일', value: 'M' },
-              ]"
-              v-model="form.front_start_week"
-            />
+            <radio-components name="front_start_week" :options="[
+              { label: '일요일', value: 'S' },
+              { label: '월요일', value: 'M' },
+            ]" v-model="form.front_start_week" />
           </dd>
         </dl>
         <dl class="cell">
@@ -218,11 +174,7 @@ const handleCopy = () => {
             <div class="split left">
               디자인 소스
               <div class="help_wrap">
-                <button
-                  type="button"
-                  class="btn_help"
-                  onclick="openLayer('layerSource')"
-                >
+                <button type="button" class="btn_help" onclick="openLayer('layerSource')">
                   <span class="blind">도움말</span>
                 </button>
                 <section id="layerSource" class="layer_popup">
@@ -240,9 +192,8 @@ const handleCopy = () => {
           <dd>
             <div class="source_copy">
               <div class="sourcebox">
-                <textarea id="sourceCopy" disabled>
-&lt;iframe src="http://naver.me/xOIRAoIfaaaaaaaaaaaaaaaaaaaaaaaaaa" width="800"  height="600"  frameborder="0"&gt;&lt;/iframe&gt;</textarea
-                >
+                <textarea id="sourceCopy"
+                  disabled>&lt;iframe src="http://naver.me/xOIRAoIfaaaaaaaaaaaaaaaaaaaaaaaaaa" width="800"  height="600"  frameborder="0"&gt;&lt;/iframe&gt;</textarea>
                 <alert-components v-model="alertIsOpen" :title="alertTitle" />
               </div>
               <button type="button" class="btn_copy" @click="handleCopy">
@@ -255,14 +206,10 @@ const handleCopy = () => {
       <!-- //쇼핑몰 화면 -->
 
       <div class="btn_wrap">
-        <button-components
-          label="저장"
-          @click="
-            () => {
+        <button-components label="저장" @click="() => {
               console.log(form);
             }
-          "
-        />
+              " />
       </div>
     </div>
   </basic-setting-layout>

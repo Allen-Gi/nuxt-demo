@@ -37,7 +37,7 @@ export default defineNuxtConfig({
                 { rel: 'stylesheet', href: '/static/css/reset.css' },
                 { rel: 'stylesheet', href: '/static/css/sumoselect.min.css' },
                 { rel: 'stylesheet', href: '/static/css/common.css' },
-                // { rel: 'stylesheet', href: '/static/css/calendar.css' },
+                { rel: 'stylesheet', href: '/static/css/calendar.css' },
             ],
 
         },
