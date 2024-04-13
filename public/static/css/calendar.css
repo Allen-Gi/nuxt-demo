@@ -11,14 +11,18 @@
 .calendar_layout .calendar_left .btnSetup {position: absolute; bottom: 0; left: 0; height: 24px; padding-left: 29px; line-height: 23px; font-weight: 700; font-size: 14px;}
 .calendar_layout .calendar_left .btnSetup::before {content: ''; display: block; position: absolute; left: 4px; top: 4px; width: 16px; height: 16px; background: url('../img/ico_setup.svg') no-repeat 0 0; background-size: cover;}
 
-.calendar_option {position: relative; margin-bottom: 30px; font-size: 13px; z-index: 2;}
-.calendar_option .tit {margin-bottom: 12px; font-weight: 700;}
-/* .calendar_option .cont {display: none;} */
-.calendar_option .cont li + li {margin-top: 8px;}
+.calendar_option {position: relative; margin-bottom: 30px; font-size: 13px;}
 .calendar_option .btnAdd {position: absolute; top: 0; right: 0; width: 20px; height: 20px; background: url('../img/ico_add.svg') no-repeat 50% 50%; background-size: 16px;}
+.calendar_option .btnModify {display: none; position: absolute; top: 2px; right: 0; width: 20px; height: 20px; background: url('../img/ico_option.svg') no-repeat 50% 50%; background-size: 6px 16px;}
+.calendar_option .tit {margin-bottom: 12px; font-weight: 700;}
+.calendar_option .cont > ul {margin-top: -2px;}
+.calendar_option .cont > ul > li {padding: 2px; position: relative;}
+.calendar_option .cont > ul > li + li {margin-top: 4px;}
+.calendar_option .cont > ul.my_calendar li:hover {background: #F4F4F4;}
+.calendar_option .cont > ul.my_calendar li:hover .btnModify {display: block;}
 .calendar_option .label_ckeck input[type="checkbox"]:not(:checked) + .check_mark {background: #fff !important; border-color: #ccc !important;}
-.calendar_option .label_ckeck .only {margin-left: 5px; padding: 3px 4px 3px; border-radius: 4px; background: #E5F5FF; line-height: 1; color: #1A54F5; font-size: 10px;}
-.calendar_option .option {display: block; margin-top: 10px ;}
+.calendar_option .label_ckeck .only {display: inline-block; height: 20px; margin-left: 5px; padding: 5px 4px; border-radius: 4px; background: #E5F5FF; line-height: 1; color: #1A54F5; font-size: 10px; vertical-align: top;}
+.calendar_option .option {display: block; margin-top: 10px;}
 
 .calendar_view {min-width: 780px; min-height: 820px; flex: 1; position: relative;}
 .calendar_view .calendar_search {position: absolute; top: 0; right: 233px; z-index: 2; display: flex; gap: 0 15px;}
@@ -150,17 +154,6 @@ body .fc-list table {font-size: 13px; color: #1C1C1C;}
 .fc-list .fc-list-table .fc-list-event-time {padding-right: 30px;}
 .fc-list .fc-list-table .fc-list-event-graphic {padding-right: 8px;}
 
-#calendarLayer.layer_popup {position: absolute; top: 50%; left: 50%; width: 400px; transform: translate(-50%, -50%);}
-#calendarLayer.layer_popup h1 {margin-bottom: 20px; font-weight: 500; font-size: 14px; color: #1C1C1C;}
-#calendarLayer.layer_popup .cont {display: flex; flex-direction: column; gap: 16px; color: #757575;}
-#calendarLayer.layer_popup .cont > div {position: relative; padding-left: 10px; max-height: 180px; overflow-y: auto;}
-#calendarLayer.layer_popup .cont > div::before {content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%;}
-#calendarLayer.layer_popup .cont > .date::before {background-color: #F470CF;}
-#calendarLayer.layer_popup .cont > .description::before {background-color: #74A3FF;}
-#calendarLayer.layer_popup .cont > .url::before {background-color: #54A45866;}
-#calendarLayer.layer_popup .cont > div img {width: 100%;}
-#calendarLayer.layer_popup .btn_wrap {border: none;}
-
 /* mini calendar */
 #miniCalendar {position: relative; width: calc(100% + 10px); margin-bottom: 20px; transform: translateX(-10px);}
 #miniCalendar .fc-toolbar.fc-header-toolbar {line-height: 1; padding-left: 10px; margin: 3px 0 10px;}
@@ -176,6 +169,23 @@ body .fc-list table {font-size: 13px; color: #1C1C1C;}
 #miniCalendar .fc-daygrid .fc-daygrid-day-top {justify-content: center; padding: 2px 0;}
 #miniCalendar .fc-daygrid .fc-daygrid-day-number {padding: 0;}
 
+/* layer : 요약 팝업  */
+#layerCalendarEvent.layer_popup {position: absolute; top: 50%; left: 50%; width: 400px; transform: translate(-50%, -50%);}
+#layerCalendarEvent.layer_popup h1 {margin-bottom: 20px; font-weight: 500; font-size: 14px; color: #1C1C1C;}
+#layerCalendarEvent.layer_popup .cont {display: flex; flex-direction: column; gap: 16px; color: #757575;}
+#layerCalendarEvent.layer_popup .cont > div {position: relative; padding-left: 10px; max-height: 180px; overflow-y: auto;}
+#layerCalendarEvent.layer_popup .cont > div::before {content: ''; position: absolute; left: 0; top: 0; width: 3px; height: 100%;}
+#layerCalendarEvent.layer_popup .cont > .date::before {background-color: #F470CF;}
+#layerCalendarEvent.layer_popup .cont > .description::before {background-color: #74A3FF;}
+#layerCalendarEvent.layer_popup .cont > .url::before {background-color: #54A45866;}
+#layerCalendarEvent.layer_popup .cont > div img {width: 100%;}
+
+/* layer : 간편 등록  */
+#layerEasyAdd.layer_popup {min-width: 300px; width: 300px; top: 0; right: 0; transform: translateX(100%);}
+#layerEasyAdd.layer_popup .inputbox_wrap .inputbox {box-sizing: border-box; padding: 0 10px;}
+
+/* layer : 간편 수정  */
+#layerEasyModify.layer_popup {min-width: 164px; width: 164px; top: 0; right: 0; transform: translateX(100%); padding: 15px 10px;}
 
 /* modal : 프로모션 캘린더 구독 */
 #registerCalendar.modal_popup .modal_inner {width: 725px; padding: 0;}
