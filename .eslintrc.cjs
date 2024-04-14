@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  extends: ['@nuxt/eslint-config', 'prettier'],
+  extends: ['@nuxt/eslint-config'],
   rules: {
     // override/add rules settings here, such as:
     'vue/multi-word-component-names': 'off',
