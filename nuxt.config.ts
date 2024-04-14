@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   modules: ['@pinia/nuxt', '@nuxt/image', '@nuxtjs/i18n', '@vueuse/nuxt'],
   runtimeConfig: {
     public: {
-      baseURL: 'http://localhost:8000',
+      baseURL: process.env.NUXT_API_REAL_URL,
     },
   },
   app: {
