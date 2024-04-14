@@ -87,20 +87,10 @@ const handleCopy = () => {
           <dt>
             <div class="split left">
               하루 표시 일정
-              <div class="help_wrap">
-                <button type="button" class="btn_help" onclick="openLayer('layerDay')">
-                  <span class="blind">도움말</span>
-                </button>
-                <section id="layerDay" class="layer_popup">
-                  <button onclick="closeLayer('layerDay')" class="close">
-                    <span class="blind">닫기</span>
-                  </button>
-                  <h1>도움말</h1>
-                  <ul class="list_hyp">
-                    <li>하루에 표시될 일정의 최대 개수를 설정할 수 있어요.</li>
-                  </ul>
-                </section>
-              </div>
+              <help-components>
+                <li>하루에 표시될 일정의 최대 개수를 설정할 수 있어요.</li>
+                <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
+              </help-components>
             </div>
           </dt>
           <dd>
@@ -173,20 +163,10 @@ const handleCopy = () => {
           <dt>
             <div class="split left">
               디자인 소스
-              <div class="help_wrap">
-                <button type="button" class="btn_help" onclick="openLayer('layerSource')">
-                  <span class="blind">도움말</span>
-                </button>
-                <section id="layerSource" class="layer_popup">
-                  <button onclick="closeLayer('layerSource')" class="close">
-                    <span class="blind">닫기</span>
-                  </button>
-                  <h1>도움말</h1>
-                  <ul class="list_hyp">
-                    <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
-                  </ul>
-                </section>
-              </div>
+              <help-components>
+                <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
+                <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
+              </help-components>
             </div>
           </dt>
           <dd>

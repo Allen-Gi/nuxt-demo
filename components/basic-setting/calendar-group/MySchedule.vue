@@ -99,35 +99,25 @@ watch(list, (val) => {
       <li>
         <div class="split center">
           <strong>단독 캘린더 사용여부</strong>
-          <div class="help_wrap">
-            <button type="button" class="btn_help" onclick="openLayer('layerSingleCalendar')">
-              <span class="blind">도움말</span>
-            </button>
-            <section id="layerSingleCalendar" class="layer_popup right">
-              <button onclick="closeLayer('layerSingleCalendar')" class="close">
-                <span class="blind">닫기</span>
-              </button>
-              <h1>도움말</h1>
-              <ul class="list_hyp">
-                <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
-              </ul>
-            </section>
-          </div>
-        </div>
-      </li>
-      <li><strong>관리</strong></li>
-      <li><strong>순서</strong></li>
-    </ul>
-    <client-only>
-      <draggable v-model="list" v-bind="dragOptions" tag="div" item-key="sort" class="sort_content ui-sortable">
-        <template #item="{ element }">
-          <basic-setting-calendar-my-schedule-item :item="element" />
-        </template>
-      </draggable>
-    </client-only>
+          <help-components>
+      <li>하루에 표시될 일정의 최대 개수를 설정할 수 있어요.</li>
+      <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
+      </help-components>
+  </div>
+  </li>
+  <li><strong>관리</strong></li>
+  <li><strong>순서</strong></li>
+  </ul>
+  <client-only>
+    <draggable v-model="list" v-bind="dragOptions" tag="div" item-key="sort" class="sort_content ui-sortable">
+      <template #item="{ element }">
+        <basic-setting-calendar-group-my-schedule-item :item="element" />
+      </template>
+    </draggable>
+  </client-only>
   </div>
   <!-- //내 일정 리스트 -->
-  <basic-setting-calendar-my-schedule-add-modal v-model="addGroupIsOpenLayer" />
+  <basic-setting-calendar-group-my-schedule-add-modal v-model="addGroupIsOpenLayer" />
 </template>
 
 <style scoped></style>

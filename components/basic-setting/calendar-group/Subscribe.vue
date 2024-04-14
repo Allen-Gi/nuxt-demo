@@ -91,42 +91,32 @@ watch(subscriptionList, (val) => {
       <li>
         <div class="split center">
           <strong>단독 캘린더 사용여부</strong>
-          <div class="help_wrap">
-            <button type="button" class="btn_help" onclick="openLayer('layerSingleCalendar2')">
-              <span class="blind">도움말</span>
-            </button>
-            <section id="layerSingleCalendar2" class="layer_popup right">
-              <button onclick="closeLayer('layerSingleCalendar2')" class="close">
-                <span class="blind">닫기</span>
-              </button>
-              <h1>도움말</h1>
-              <ul class="list_hyp">
-                <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
-              </ul>
-            </section>
-          </div>
-        </div>
-      </li>
-      <li><strong>관리</strong></li>
-      <li><strong>순서</strong></li>
-    </ul>
+          <help-components>
+      <li>하루에 표시될 일정의 최대 개수를 설정할 수 있어요.</li>
+      <li>내용들어가는 곳 내용들어가는 곳 내용들어가는 곳</li>
+      </help-components>
+  </div>
+  </li>
+  <li><strong>관리</strong></li>
+  <li><strong>순서</strong></li>
+  </ul>
 
-    <div class="sort_content ui-sortable">
-      <div class="rowspan ui-sortable-handle">
-        프로모션 일정<br /><a href="javascript:void(0)" @click="subscribeCancelIsOpenToggle()"
-          class="btn_link btnModalOpen">구독 취소</a>
-      </div>
-      <client-only>
-        <draggable v-model="subscriptionList" v-bind="dragOptions" tag="div" item-key="sort">
-          <template #item="{ element }">
-            <basic-setting-calendar-subscribe-item :item="element" />
-          </template>
-        </draggable>
-      </client-only>
+  <div class="sort_content ui-sortable">
+    <div class="rowspan ui-sortable-handle">
+      프로모션 일정<br /><a href="javascript:void(0)" @click="subscribeCancelIsOpenToggle()" class="btn_link btnModalOpen">구독
+        취소</a>
     </div>
+    <client-only>
+      <draggable v-model="subscriptionList" v-bind="dragOptions" tag="div" item-key="sort">
+        <template #item="{ element }">
+          <basic-setting-calendar-group-subscribe-item :item="element" />
+        </template>
+      </draggable>
+    </client-only>
+  </div>
   </div>
   <!-- //구독 일정 리스트 -->
-  <basic-setting-calendar-subscribe-cancel-modal v-model="subscribeCancelIsOpen" />
+  <basic-setting-calendar-group-subscribe-cancel-modal v-model="subscribeCancelIsOpen" />
 </template>
 
 <style lang="scss" scoped></style>

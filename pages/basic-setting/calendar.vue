@@ -12,11 +12,11 @@
       </p>
 
       <!-- 내일정 -->
-      <basic-setting-calendar-my-schedule />
+      <basic-setting-calendar-group-my-schedule />
 
 
       <!-- 구독 일정 -->
-      <basic-setting-calendar-subscribe />
+      <basic-setting-calendar-group-subscribe />
     </div>
   </basic-setting-layout>
 

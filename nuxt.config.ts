@@ -25,26 +25,26 @@ export default defineNuxtConfig({
         { "http-equiv": "Content-Type", content: "text/html; charset=utf-8" },
       ],
       script: [
-        {
-          src: "/static/js/jquery.min.js",
-          type: "text/javascript",
-          defer: true,
-        },
-        {
-          src: "/static/js/jquery-ui.min.js",
-          type: "text/javascript",
-          defer: true,
-        },
-        {
-          src: "/static/js/jquery.sumoselect.min.js",
-          type: "text/javascript",
-          defer: true,
-        },
-        {
-          src: "/static/js/jquery.dateandtime.js",
-          type: "text/javascript",
-          defer: true,
-        },
+        // {
+        //   src: "/static/js/jquery.min.js",
+        //   type: "text/javascript",
+        //   defer: true,
+        // },
+        // {
+        //   src: "/static/js/jquery-ui.min.js",
+        //   type: "text/javascript",
+        //   defer: true,
+        // },
+        // {
+        //   src: "/static/js/jquery.sumoselect.min.js",
+        //   type: "text/javascript",
+        //   defer: true,
+        // },
+        // {
+        //   src: "/static/js/jquery.dateandtime.js",
+        //   type: "text/javascript",
+        //   defer: true,
+        // },
         {
           src: "/static/js/common.ui.js",
           type: "text/javascript",
