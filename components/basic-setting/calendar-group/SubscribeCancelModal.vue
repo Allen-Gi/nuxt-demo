@@ -1,27 +1,27 @@
 <script setup>
-const isOpen = defineModel();
-const onCancel = () => {
-  console.log("cancel");
-  isOpen.value = false;
-};
+  const isOpen = defineModel()
+  const onCancel = () => {
+    console.log('cancel')
+    isOpen.value = false
+  }
 
-const marginTop = ref("");
-watch(isOpen, async (value) => {
-  if (value) {
-    if (process.client) {
-      await nextTick();
-      const modalInner = document.querySelector(".modal_inner");
-      if (modalInner) {
-        marginTop.value = `margin-top: -${modalInner.clientHeight / 2}px`;
+  const marginTop = ref('')
+  watch(isOpen, async (value) => {
+    if (value) {
+      if (import.meta.client) {
+        await nextTick()
+        const modalInner = document.querySelector('.modal_inner')
+        if (modalInner) {
+          marginTop.value = `margin-top: -${modalInner.clientHeight / 2}px`
+        }
       }
     }
-  }
-});
+  })
 
-const onSubmit = () => {
-  console.log("submit");
-  isOpen.value = false;
-};
+  const onSubmit = () => {
+    console.log('submit')
+    isOpen.value = false
+  }
 </script>
 
 <template>
@@ -64,7 +64,7 @@ const onSubmit = () => {
       </div>
     </div>
   </section>
-  <div v-if="isOpen" class="dimed" style="display: block"></div>
+  <div v-if="isOpen" class="dimed" style="display: block" />
 </template>
 
 <style lang="scss" scoped></style>

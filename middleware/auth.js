@@ -1,7 +1,7 @@
-import { useShopInfoStore } from "~/stores/shopInfoStore.js";
+import { useShopInfoStore } from '~/stores/shopInfoStore.js'
 
 export default defineNuxtRouteMiddleware(async (to) => {
-  const { getShopInfo } = useShopInfoStore();
-  await getShopInfo();
-  console.log("client middleware");
-});
+  const { getShopInfo } = useShopInfoStore()
+  await getShopInfo()
+  console.log('client middleware')
+})

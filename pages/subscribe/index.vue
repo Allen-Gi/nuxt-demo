@@ -1,13 +1,7 @@
-<script setup lang="ts">
-
-</script>
+<script setup lang="ts"></script>
 
 <template>
-<div>
-  subscribe
-</div>
+  <div>subscribe</div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

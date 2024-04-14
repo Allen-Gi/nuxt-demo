@@ -1,37 +1,37 @@
 <script setup lang="ts">
-definePageMeta({
-  middleware: "auth",
-});
-defineI18nRoute(false);
+  definePageMeta({
+    middleware: 'auth',
+  })
+  defineI18nRoute(false)
 
-const checkbox = ref(false);
+  const checkbox = ref(false)
 
-const radio = ref("radio1");
-const switchToggle = ref(true);
+  const radio = ref('radio1')
+  const switchToggle = ref(true)
 
-const inputField = ref("");
-const searchField = ref("");
+  const inputField = ref('')
+  const searchField = ref('')
 
-const selectField = ref("");
-const selectOptions = ref([
-  { value: "option1", label: "옵션1" },
-  { value: "option2", label: "옵션2" },
-  { value: "option3", label: "옵션3" },
-]);
+  const selectField = ref('')
+  const selectOptions = ref([
+    { value: 'option1', label: '옵션1' },
+    { value: 'option2', label: '옵션2' },
+    { value: 'option3', label: '옵션3' },
+  ])
 
-const multiSelectField = ref([]);
-const multiSelectOptions = ref([
-  { value: "option1", label: "캘린더1" },
-  { value: "option2", label: "캘린더2" },
-  { value: "option3", label: "캘린더3" },
-]);
+  const multiSelectField = ref([])
+  const multiSelectOptions = ref([
+    { value: 'option1', label: '캘린더1' },
+    { value: 'option2', label: '캘린더2' },
+    { value: 'option3', label: '캘린더3' },
+  ])
 
-const layerPopup = ref(false);
+  const layerPopup = ref(false)
 
-onUpdated(() => {
-  console.log(checkbox.value);
-  console.log(radio.value);
-});
+  onUpdated(() => {
+    console.log(checkbox.value)
+    console.log(radio.value)
+  })
 </script>
 
 <template>
@@ -55,7 +55,7 @@ onUpdated(() => {
       :options="[
         { label: '옵션1', value: 'radio1' },
         { label: '옵션2', value: 'radio2' },
-        { label: '옵션3', value: 'radio3' }
+        { label: '옵션3', value: 'radio3' },
       ]"
       name="radio1"
     />

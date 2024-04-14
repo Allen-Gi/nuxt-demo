@@ -1,18 +1,18 @@
 <script setup lang="ts">
-const { label, size, type } = defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  size: {
-    type: String,
-    default: "",
-  },
-  type: {
-    type: String,
-    default: "primary",
-  },
-});
+  const { label, size, type } = defineProps({
+    label: {
+      type: String,
+      required: true,
+    },
+    size: {
+      type: String,
+      default: '',
+    },
+    type: {
+      type: String,
+      default: 'primary',
+    },
+  })
 </script>
 
 <template>

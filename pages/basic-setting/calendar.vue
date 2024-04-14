@@ -1,6 +1,4 @@
-<script setup>
-
-</script>
+<script setup></script>
 
 <template>
   <basic-setting-layout>
@@ -14,17 +12,15 @@
       <!-- 내일정 -->
       <basic-setting-calendar-group-my-schedule />
 
-
       <!-- 구독 일정 -->
       <basic-setting-calendar-group-subscribe />
     </div>
   </basic-setting-layout>
-
 </template>
 
 <style scoped>
-.ghost {
-  opacity: 0.4;
-  background-color: #ffffff !important;
-}
+  .ghost {
+    opacity: 0.4;
+    background-color: #ffffff !important;
+  }
 </style>

@@ -1,8 +1,4 @@
-<script setup lang="ts">
-
-const { url } = defineProps()
-
-</script>
+<script setup></script>
 
 <template>
   <div>

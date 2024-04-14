@@ -1,5 +1,5 @@
 export default defineEventHandler((event) => {
-    return {
-        message: 'PUT'
-    };
-});
+  return {
+    message: 'PUT',
+  }
+})

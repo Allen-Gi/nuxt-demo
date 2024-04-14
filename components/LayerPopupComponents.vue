@@ -1,14 +1,14 @@
 <script setup>
-const layerPopup = defineModel();
+  const layerPopup = defineModel()
 
-const closeLayer = (layerId) => {
-  layerPopup.value = false;
-};
+  const closeLayer = () => {
+    layerPopup.value = false
+  }
 </script>
 
 <template>
-  <section class="layer_popup" v-show="layerPopup">
-    <button @click="closeLayer" class="close">
+  <section v-show="layerPopup" class="layer_popup">
+    <button class="close" @click="closeLayer">
       <span class="blind">닫기</span>
     </button>
     <h1>도움말</h1>

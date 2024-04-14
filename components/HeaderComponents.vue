@@ -1,10 +1,10 @@
 <script setup>
-const { title } = defineProps({
-  title: {
-    type: String,
-    required: true
-  }
-})
+  const { title } = defineProps({
+    title: {
+      type: String,
+      required: true,
+    },
+  })
 </script>
 
 <template>
@@ -14,6 +14,4 @@ const { title } = defineProps({
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

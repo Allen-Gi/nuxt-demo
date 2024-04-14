@@ -5,20 +5,18 @@
     <pre>
       {{ user }}
     </pre>
-
   </div>
 </template>
 
 <script setup>
-import {useUsers} from "~/composables/users.js";
-const route = useRoute()
-const { id: userId } = route.params
+  import { useUsers } from '~/composables/users.js'
 
-const { getUser } = useUsers();
-const { user } = await getUser(userId);
-defineI18nRoute(false)
+  const route = useRoute()
+  const { id: userId } = route.params
+
+  const { getUser } = useUsers()
+  const { user } = await getUser(userId)
+  defineI18nRoute(false)
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

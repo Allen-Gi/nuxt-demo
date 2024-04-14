@@ -1,13 +1,13 @@
 // This is a basic setting composable
 export const getDefaultSetting = async () => {
   const { data, error, status, clear, execute, pending, refresh } =
-    await useApiFetch("/api/basic-setting", {
-      method: "GET",
-    });
+    await useApiFetch('/api/basic-setting', {
+      method: 'GET',
+    })
 
-  if (process.client && error?.value) {
-    alert("Failed to fetch data");
-    return false;
+  if (import.meta.client && error?.value) {
+    alert('Failed to fetch data')
+    return false
   }
 
   return {
@@ -18,19 +18,19 @@ export const getDefaultSetting = async () => {
     pending,
     refresh,
     error,
-  };
-};
+  }
+}
 
 export const createDefaultSetting = async (data) => {
-  const { error, status, clear, execute, pending, refresh } = await useAPI(
-    "/api/basic-setting",
+  const { error, status, clear, execute, pending, refresh } = await useApiFetch(
+    '/api/basic-setting',
     {
-      method: "POST",
+      method: 'POST',
       data,
-    }
-  );
+    },
+  )
 
-  if (error.value) throw createError("Failed to fetch data");
+  if (error.value) throw createError('Failed to fetch data')
 
   return {
     status,
@@ -38,19 +38,19 @@ export const createDefaultSetting = async (data) => {
     execute,
     pending,
     refresh,
-  };
-};
+  }
+}
 
 export const updateDefaultSetting = async (data) => {
-  const { error, status, clear, execute, pending, refresh } = await useAPI(
-    "/api/basic-setting",
+  const { error, status, clear, execute, pending, refresh } = await useApiFetch(
+    '/api/basic-setting',
     {
-      method: "PUT",
+      method: 'PUT',
       data,
-    }
-  );
+    },
+  )
 
-  if (error.value) throw createError("Failed to fetch data");
+  if (error.value) throw createError('Failed to fetch data')
 
   return {
     status,
@@ -58,13 +58,13 @@ export const updateDefaultSetting = async (data) => {
     execute,
     pending,
     refresh,
-  };
-};
+  }
+}
 
 export const useSetting = () => {
   return {
     getDefaultSetting,
     createDefaultSetting,
     updateDefaultSetting,
-  };
-};
+  }
+}
