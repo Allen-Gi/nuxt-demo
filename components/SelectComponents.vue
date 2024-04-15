@@ -1,19 +1,19 @@
-<script setup lang="ts">
-  const select = defineModel({
-    type: String,
-    default: '',
-  })
+<script setup>
+const select = defineModel({
+  type: [String, Number],
+  default: '',
+})
 
-  const { name, options } = defineProps({
-    name: {
-      type: String,
-      default: 'checkbox1',
-    },
-    options: {
-      type: Array,
-      default: () => [],
-    },
-  })
+const { name, options } = defineProps({
+  name: {
+    type: String,
+    default: 'checkbox1',
+  },
+  options: {
+    type: Array,
+    default: () => [],
+  },
+})
 </script>
 
 <template>
