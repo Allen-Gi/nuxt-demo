@@ -28,48 +28,78 @@
 
 <template>
   <NuxtLoadingIndicator />
-  <NuxtLayout>
-    <div
-      style="
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center;
-        justify-content: center;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        text-align: center;
-      "
-    >
-      <div style="font-size: 1.875rem; line-height: 2.25rem">
-        {{ is404 ? 'This page could not be found' : 'An error occurred' }}
-      </div>
-      <div style="font-size: 1.25rem; line-height: 1.75rem opacity: 0.5;">
-        Looks like you've followed a broken link or entered a URL that doesn't
-        exist on this site.
-      </div>
-      <pre v-if="isDev" style="width: 100%; white-space: normal">{{
-        error
-      }}</pre>
-      <button
-        style="
-          background-color: gray;
-          padding-left: 12px;
-          padding-right: 12px;
-          padding-top: 6px;
-          padding-bottom: 6px;
-          font-size: 0.875rem !important;
-          line-height: 1.25rem !important;
-          font-weight: 500 !important;
-          line-height: 1.25rem;
-          letter-spacing: 0.0178571429em !important;
-          text-transform: none !important;
-          border-radius: 0.5rem !important;
-        "
-        @click="handleError"
-      >
-        &lt; Go Back
-      </button>
+
+  <div
+    style="
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+      text-align: center;
+    "
+  >
+    <div style="font-size: 1.875rem; line-height: 2.25rem">
+      {{ is404 ? '페이지를 찾을수 없습니다' : 'Error' }}
     </div>
-  </NuxtLayout>
+    <table v-if="isDev" class="error-container">
+      <tr v-for="(e, key) of error" :key="key">
+        <td>{{ key }}</td>
+        <td>
+          <div v-html="e"></div>
+        </td>
+      </tr>
+    </table>
+    <button
+      style="
+        background-color: gray;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 6px;
+        padding-bottom: 6px;
+        font-size: 0.875rem !important;
+        line-height: 1.25rem !important;
+        font-weight: 500 !important;
+        line-height: 1.25rem;
+        letter-spacing: 0.0178571429em !important;
+        text-transform: none !important;
+        border-radius: 0.5rem !important;
+      "
+      @click="handleError"
+    >
+      &lt; 돌아가기
+    </button>
+  </div>
 </template>
+
+<style scoped>
+  .error-container {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-top: 1rem;
+  }
+
+  .error-container td {
+    padding: 0.5rem;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .error-container td:first-child {
+    text-align: right;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .error-container td:last-child {
+    text-align: left;
+    font-weight: 400;
+    color: #666;
+  }
+
+  .error-container tr:last-child td {
+    border-bottom: none;
+  }
+</style>

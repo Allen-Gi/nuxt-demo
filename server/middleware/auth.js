@@ -1,3 +1,3 @@
 export default defineEventHandler(async (event) => {
-  console.log('server middleware')
+  console.log('New request: ' + getRequestURL(event))
 })

@@ -3,7 +3,7 @@ import { interceptors } from '~/utils/interceptors'
 export function useApiFetch(url, options) {
   let headers = {}
 
-  const token = useCookie('token');
+  const token = useCookie('token')
   if (token.value) {
     headers.token = token.value
   }
@@ -17,7 +17,7 @@ export function useApiFetch(url, options) {
 
   return useFetch(url, {
     watch: false,
-    server: true,
+    //server: true,
     ...options,
     headers: {
       ...headers,

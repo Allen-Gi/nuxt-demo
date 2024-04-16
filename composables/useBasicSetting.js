@@ -1,14 +1,11 @@
-import { server } from "typescript"
-
 // This is a basic setting composable
 export const fetchBasicSetting = async () => {
-
   const settingInfo = ref({
     start_calendar: 'M', // 기본화면 - M월, W주, D일
     start_week: 'M', // 한주의시작 - S일요일, M월요일
     use_secondary_calendar: 'T', // 보조캘린더 사용여부 - T, F
     display_limit: '5', // 하루표시일정 - 0,5,10
-  
+
     use_front: 'T', // 쇼핑몰 화면 사용여부 - T, F
     front_use_permission: 'T', // 쇼핑몰 접근 권한 사용여부 - T, F
     front_permission: [], // 쇼핑몰 접근 권한 - a,b,c
@@ -22,24 +19,25 @@ export const fetchBasicSetting = async () => {
     update_datetime: '',
   })
 
-
   const getSettingInfo = async () => {
     const { data, error } = await useApiFetch('/api/basic-setting', {
       method: 'GET',
       query: {},
     })
 
-    if (import.meta.client && error.value) {
-      alert('Failed to fetch Basic Setting Data')
-      return false
+    if (error.value) {
+      throw createError({
+        ...error.value,
+        message: '기본설정 정보를 가져오는데 실패했습니다.',
+      })
     }
 
-    settingInfo.value = {...settingInfo.value, ...data.value?.data}
+    settingInfo.value = { ...settingInfo.value, ...data.value?.data }
   }
 
   return {
     settingInfo,
-    getSettingInfo
+    getSettingInfo,
   }
 }
 
@@ -69,7 +67,7 @@ export const updateDefaultSetting = async (settingInfo) => {
     start_week: settingInfo.start_week,
     use_secondary_calendar: settingInfo.use_secondary_calendar,
     display_limit: settingInfo.display_limit,
-  
+
     use_front: settingInfo.use_front,
     front_permission: settingInfo.front_permission,
     front_start_calendar: settingInfo.front_start_calendar,
@@ -78,7 +76,7 @@ export const updateDefaultSetting = async (settingInfo) => {
     daily_reporter_send_hour: settingInfo.daily_reporter_send_hour,
     daily_reporter_send_group: settingInfo.daily_reporter_send_group,
   }
-  
+
   const { error, status, clear, execute, pending, refresh } = await useApiFetch(
     '/api/basic-setting',
     {
