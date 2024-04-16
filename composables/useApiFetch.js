@@ -17,7 +17,7 @@ export function useApiFetch(url, options) {
 
   return useFetch(url, {
     watch: false,
-    //server: false,
+    server: true,
     ...options,
     headers: {
       ...headers,

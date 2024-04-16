@@ -1,7 +1,7 @@
 <script setup>
 import { useToggle } from '@vueuse/core'
 import draggable from 'vuedraggable'
-import { useCalendarGroup } from '~/composables/basic-setting/useCalendarGroup'
+import { useCalendarGroup } from '~/composables/useCalendarGroup'
 
 const [subscribeCancelIsOpen, subscribeCancelIsOpenToggle] = useToggle()
 const { subscribedCalendarGroup, fetchSubscribedCalendarGroup, updateSubscribedCalendarGroupSort } = useCalendarGroup()
@@ -63,3 +63,4 @@ watch(subscribedCalendarGroup, (val) => {
 </template>
 
 <style lang="scss" scoped></style>
+~/composables/useCalendarGroup

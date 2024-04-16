@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useToggle } from '@vueuse/core'
 import draggable from 'vuedraggable'
-import { useCalendarGroup } from '~/composables/basic-setting/useCalendarGroup'
+import { useCalendarGroup } from '~/composables/useCalendarGroup'
 
 const [addGroupIsOpenLayer, addGroupIsOpenToggle] = useToggle()
 
@@ -66,3 +66,4 @@ watch(myCalendarGroup, (val) => {
 </template>
 
 <style scoped></style>
+~/composables/useCalendarGroup

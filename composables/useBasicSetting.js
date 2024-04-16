@@ -1,14 +1,11 @@
+import { server } from "typescript"
+
 // This is a basic setting composable
 export const fetchBasicSetting = async () => {
 
   const settingInfo = ref({
-    id: '',
-    mall_id: '',
-    shop_no: '',
-    user_id: '',
-  
-    start_calendar: 'W', // 기본화면 - M월, W주, D일
-    start_week: 'S', // 한주의시작 - S일요일, M월요일
+    start_calendar: 'M', // 기본화면 - M월, W주, D일
+    start_week: 'M', // 한주의시작 - S일요일, M월요일
     use_secondary_calendar: 'T', // 보조캘린더 사용여부 - T, F
     display_limit: '5', // 하루표시일정 - 0,5,10
   
@@ -29,11 +26,7 @@ export const fetchBasicSetting = async () => {
   const getSettingInfo = async () => {
     const { data, error } = await useApiFetch('/api/basic-setting', {
       method: 'GET',
-      query: {
-        mall_id: '1',
-        shop_no: '1',
-        user_id: '1',
-      },
+      query: {},
     })
 
     if (import.meta.client && error.value) {
@@ -70,12 +63,27 @@ export const createDefaultSetting = async (data) => {
   }
 }
 
-export const updateDefaultSetting = async (data) => {
+export const updateDefaultSetting = async (settingInfo) => {
+  const form = {
+    start_calendar: settingInfo.start_calendar,
+    start_week: settingInfo.start_week,
+    use_secondary_calendar: settingInfo.use_secondary_calendar,
+    display_limit: settingInfo.display_limit,
+  
+    use_front: settingInfo.use_front,
+    front_permission: settingInfo.front_permission,
+    front_start_calendar: settingInfo.front_start_calendar,
+    front_start_week: settingInfo.front_start_week,
+    use_daily_reporter: settingInfo.use_daily_reporter,
+    daily_reporter_send_hour: settingInfo.daily_reporter_send_hour,
+    daily_reporter_send_group: settingInfo.daily_reporter_send_group,
+  }
+  
   const { error, status, clear, execute, pending, refresh } = await useApiFetch(
     '/api/basic-setting',
     {
       method: 'PUT',
-      data,
+      body: form,
     },
   )
 

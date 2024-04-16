@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
   const query = getQuery(event)
 
   const token = getHeader(event, 'token')
-  console.log('token', token)
   const config = useRuntimeConfig(event)
 
   const res = await $fetch(path, {

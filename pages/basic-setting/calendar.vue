@@ -1,4 +1,11 @@
-<script setup></script>
+<script setup>
+import { useBasicSetting, updateDefaultSetting } from '~/composables/useBasicSetting'
+
+const { fetchBasicSetting } = useBasicSetting()
+const { settingInfo, getSettingInfo } = await fetchBasicSetting()
+
+await getSettingInfo()
+</script>
 
 <template>
   <basic-setting-layout>
@@ -19,8 +26,8 @@
 </template>
 
 <style scoped>
-  .ghost {
-    opacity: 0.4;
-    background-color: #ffffff !important;
-  }
+.ghost {
+  opacity: 0.4;
+  background-color: #ffffff !important;
+}
 </style>

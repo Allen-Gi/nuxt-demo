@@ -1,5 +1,24 @@
-export default defineEventHandler((event) => {
+import { $fetch } from 'ofetch'
+
+export default defineEventHandler(async (event) => {
+  const path = getRouterParam(event, 'path')
+  const body = await readBody(event)
+
+  const token = getHeader(event, 'token')
+  const config = useRuntimeConfig(event)
+
+  const res = await $fetch(path, {
+    method: 'PUT',
+    baseURL: config.public.baseURL,
+
+    headers: {
+      token: token ?? '',
+    },
+    body,
+    ...interceptors,
+  })
+
   return {
-    message: 'PUT',
+    ...res,
   }
 })

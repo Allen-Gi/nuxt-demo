@@ -1,6 +1,6 @@
 <script setup>
 import { useClipboard } from '@vueuse/core'
-import { useBasicSetting } from '~/composables/basic-setting/useBasicSetting'
+import { useBasicSetting, updateDefaultSetting } from '~/composables/useBasicSetting'
 
 const source = ref(
   '&lt;iframe src="http://naver.me/xOIRAoIfaaaaaaaaaaaaaaaaaaaaaaaaaa" width="800"  height="600"  frameborder="0"&gt;&lt;/iframe&gt;',
@@ -10,6 +10,7 @@ const { text, copy, copied, isSupported } = useClipboard({ source })
 
 const { fetchBasicSetting } = useBasicSetting()
 const { settingInfo, getSettingInfo } = await fetchBasicSetting()
+
 await getSettingInfo()
 
 const alertIsOpen = ref(false)
@@ -25,6 +26,10 @@ const handleCopy = () => {
   setTimeout(() => {
     alertIsOpen.value = false
   }, 2000)
+}
+
+const handleSave = async () => {
+  await updateDefaultSetting(settingInfo)
 }
 </script>
 
@@ -168,14 +173,10 @@ const handleCopy = () => {
       <!-- //쇼핑몰 화면 -->
 
       <div class="btn_wrap">
-        <button-components label="저장" @click="() => {
-              console.log(settingInfo)
-            }
-              " />
+        <button-components label="저장" @click="handleSave()" />
       </div>
     </div>
   </basic-setting-layout>
 </template>
 
 <style scoped></style>
-~/composables/basic-setting/useBasicSetting
